@@ -3,7 +3,6 @@ const nextConfig = {
   output: "export",
 
   basePath: "/Doctor",
-  assetPrefix: "/Doctor/",
 
   typescript: {
     ignoreBuildErrors: true,
