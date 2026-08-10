@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react'
+import { withBase } from '@/lib/paths'
 
 const testimonials = [
   {
@@ -171,7 +172,7 @@ export default function Testimonials() {
               {/* Left - Patient photo */}
               <div className="relative h-72 lg:h-full min-h-[350px]">
                 <Image
-                  src={t.image}
+                  src={withBase(t.image)}
                   alt={t.name}
                   fill
                   className="object-cover transition-opacity duration-500"
@@ -203,7 +204,7 @@ export default function Testimonials() {
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#C9A35A]/30">
                     <Image
-                      src={t.image}
+                      src={withBase(t.image)}
                       alt={t.name}
                       width={48}
                       height={48}
@@ -286,7 +287,7 @@ export default function Testimonials() {
               </p>
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-full overflow-hidden border border-[#E8E0D5]">
-                  <Image src={test.image} alt={test.name} width={36} height={36} className="object-cover" />
+                  <Image src={withBase(test.image)} alt={test.name} width={36} height={36} className="object-cover" />
                 </div>
                 <div>
                   <div className="text-sm font-semibold text-[#222222]" style={{ fontFamily: 'var(--font-sans)' }}>

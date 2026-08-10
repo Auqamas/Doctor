@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { CheckCircle2, Clock, Phone, Mail, Calendar } from 'lucide-react'
+import { withBase } from '@/lib/paths'
 
 const treatments = [
   'Botox', 'Dermal Fillers', 'Lip Enhancement', 'HydraFacial',
@@ -106,7 +107,7 @@ export default function Appointment() {
           <div className="lg:col-span-2 reveal-left">
             <div className="relative rounded-3xl overflow-hidden h-72 lg:h-80 mb-6">
               <Image
-                src="/images/clinic-interior.png"
+                src={withBase('/images/clinic-interior.png')}
                 alt="Aesthetic Clinic Interior"
                 fill
                 className="object-cover"

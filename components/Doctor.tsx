@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { Award, BookOpen, Heart, Globe, CheckCircle2 } from 'lucide-react'
+import { withBase } from '@/lib/paths'
 
 function InstagramIcon({ size = 16 }: { size?: number }) {
   return (
@@ -93,7 +94,7 @@ export default function Doctor() {
               <div className="absolute -inset-3 rounded-[44px] bg-gradient-to-br from-[#C9A35A]/20 to-[#E8D5A3]/10" />
               <div className="relative rounded-[38px] overflow-hidden shadow-2xl aspect-[3/4]">
                 <Image
-                  src="/images/doctor-hero.png"
+                  src={withBase('/images/doctor-hero.png')}
                   alt="Dr. Fareena Asghar"
                   fill
                   className="object-cover object-top"

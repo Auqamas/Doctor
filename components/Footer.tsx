@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react'
+import { withBase } from '@/lib/paths'
 
 function InstagramIcon({ size = 15 }: { size?: number }) {
   return (
@@ -62,7 +63,7 @@ export default function Footer() {
               <Link href="/" className="inline-block mb-4 hover:opacity-80 transition-opacity">
                 <div className="relative w-24 h-24">
                   <Image
-                    src="/images/logo.png"
+                    src={withBase('/images/logo.png')}
                     alt="Aesthetic by Dr. Fareena Asghar"
                     fill
                     className="object-contain"

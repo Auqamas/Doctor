@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Phone, ChevronDown } from 'lucide-react'
+import { withBase } from '@/lib/paths'
 
 type NavItem = {
   label: string
@@ -99,7 +100,7 @@ export default function Header() {
             <Link href="/" className="flex items-center gap-3 shrink-0 min-w-0 max-w-[340px] xl:max-w-[400px] hover:opacity-80 transition-opacity">
               <div className={`relative shrink-0 ${isSolid ? 'w-20 h-20' : 'w-28 h-28'} transition-all duration-500`}>
                 <Image
-                  src="/images/logo.png"
+                  src={withBase('/images/logo.png')}
                   alt="Aesthetic by Dr. Fareena Asghar"
                   fill
                   className="object-contain"

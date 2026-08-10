@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { Award, CheckCircle2, Star } from 'lucide-react'
+import { withBase } from '@/lib/paths'
 
 const stats = [
   { value: 10, suffix: '+', label: 'Years Experience' },
@@ -123,7 +124,7 @@ export default function About() {
               <div className="absolute -inset-4 bg-[#F8F3E8] rounded-[40px] -z-10" />
               <div className="absolute top-4 left-4 right-4 bottom-4 rounded-[32px] overflow-hidden shadow-2xl">
                 <Image
-                  src="/images/doctor-about.png"
+                  src={withBase('/images/doctor-about.png')}
                   alt="Dr. Fareena Asghar in consultation"
                   fill
                   className="object-cover"

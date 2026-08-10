@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { ArrowDown, Sparkles, Star } from 'lucide-react'
+import { withBase } from '@/lib/paths'
 
 const typingWords = ['Natural Beauty', 'Timeless Elegance', 'Youthful Radiance', 'Confident You']
 
@@ -68,7 +69,7 @@ export default function Hero() {
         style={{ transform: `translateY(${scrollY * 0.3}px)` }}
       >
         <Image
-          src="/images/hero-bg.png"
+          src={withBase('/images/hero-bg.png')}
           alt="Luxury aesthetic clinic background"
           fill
           className="object-cover opacity-30"
@@ -189,7 +190,7 @@ export default function Hero() {
             <div className="relative w-80 h-[480px] lg:w-96 lg:h-[550px]">
               <div className="absolute inset-0 rounded-[40px] overflow-hidden border border-[#C9A35A]/20 shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
                 <Image
-                  src="/images/doctor-hero.png"
+                  src={withBase('/images/doctor-hero.png')}
                   alt="Dr. Fareena Asghar - Aesthetic & Dermatologist Physician"
                   fill
                   className="object-cover object-top"

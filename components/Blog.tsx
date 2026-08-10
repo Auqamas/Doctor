@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import { ArrowRight, Clock, Tag, Calendar } from 'lucide-react'
+import { withBase } from '@/lib/paths'
 
 const posts = [
   {
@@ -101,7 +102,7 @@ export default function Blog() {
               {/* Image */}
               <div className="relative h-52 overflow-hidden">
                 <Image
-                  src={post.image}
+                  src={withBase(post.image)}
                   alt={post.title}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"

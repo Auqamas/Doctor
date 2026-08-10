@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { X, ZoomIn, ChevronLeft, ChevronRight } from 'lucide-react'
+import { withBase } from '@/lib/paths'
 
 
 const galleryImages = [
@@ -129,7 +130,7 @@ export default function Gallery() {
             >
               <div className={`relative w-full ${i % 3 === 0 ? 'aspect-[4/5]' : 'aspect-square'}`}>
                 <Image
-                  src={img.src}
+                  src={withBase(img.src)}
                   alt={img.title}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -191,7 +192,7 @@ export default function Gallery() {
           >
             <div className="relative w-full h-[80vh]">
               <Image
-                src={filtered[lightboxIndex].src}
+                src={withBase(filtered[lightboxIndex].src)}
                 alt={filtered[lightboxIndex].title}
                 fill
                 className="object-contain"

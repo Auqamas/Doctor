@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { ArrowRight, Zap, Droplets, Sparkles, Sun, Wind, Activity, Scissors, RefreshCw, Layers, CloudSun, Leaf } from 'lucide-react'
+import { withBase } from '@/lib/paths'
 
 const treatments = [
   {
@@ -192,7 +193,7 @@ export default function Treatments() {
                 {/* Image */}
                 <div className="relative h-52 overflow-hidden">
                   <Image
-                    src={treatment.image}
+                    src={withBase(treatment.image)}
                     alt={treatment.title}
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
