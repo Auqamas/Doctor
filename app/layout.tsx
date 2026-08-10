@@ -17,6 +17,8 @@ const dmSans = DM_Sans({
   display: 'swap',
 })
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+
 export const metadata: Metadata = {
   title: 'Aesthetic by Dr. Fareena Asghar | Premium Aesthetic Clinic',
   description:
@@ -26,11 +28,13 @@ export const metadata: Metadata = {
   authors: [{ name: 'Dr. Fareena Asghar' }],
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: '32x32', type: 'image/png' },
-      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
-      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+      { url: `${basePath}/favicon.ico`, sizes: '32x32', type: 'image/x-icon' },
+      { url: `${basePath}/favicon.png`, sizes: '32x32', type: 'image/png' },
+      { url: `${basePath}/icon-192.png`, sizes: '192x192', type: 'image/png' },
+      { url: `${basePath}/icon-512.png`, sizes: '512x512', type: 'image/png' },
     ],
-    apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
+    shortcut: `${basePath}/favicon.ico`,
+    apple: [{ url: `${basePath}/apple-icon.png`, sizes: '180x180', type: 'image/png' }],
   },
   openGraph: {
     title: 'Aesthetic by Dr. Fareena Asghar | Where Science Meets Timeless Beauty',
