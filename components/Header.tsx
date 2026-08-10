@@ -97,7 +97,7 @@ export default function Header() {
           <div className="flex items-center justify-between gap-4">
 
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 shrink-0 min-w-0 max-w-[340px] xl:max-w-[400px] hover:opacity-80 transition-opacity">
+            <Link href="/" className="flex items-center gap-3 shrink-0 min-w-0 max-w-[420px] xl:max-w-[480px] hover:opacity-80 transition-opacity">
               <div className={`relative shrink-0 ${isSolid ? 'w-20 h-20' : 'w-28 h-28'} transition-all duration-500`}>
                 <Image
                   src={withBase('/images/logo.png')}
@@ -109,13 +109,13 @@ export default function Header() {
               </div>
               <div className="flex flex-col leading-tight min-w-0">
                 <span
-                  className={`text-base sm:text-lg xl:text-xl font-semibold tracking-wide transition-colors duration-500 whitespace-nowrap ${logoMainClass}`}
+                  className={`text-xl sm:text-2xl xl:text-3xl font-semibold tracking-wide transition-colors duration-500 whitespace-nowrap ${logoMainClass}`}
                   style={{ fontFamily: 'var(--font-serif)' }}
                 >
                   Dr. Fareena Asghar
                 </span>
                 <span
-                  className={`text-[10px] sm:text-[11px] font-medium tracking-[0.1em] uppercase transition-colors duration-500 whitespace-nowrap ${logoSubClass}`}
+                  className={`text-[10px] sm:text-xs font-medium tracking-[0.1em] uppercase transition-colors duration-500 whitespace-nowrap ${logoSubClass}`}
                   style={{ fontFamily: 'var(--font-sans)' }}
                 >
                   Aesthetic &amp; Dermatologist Physician

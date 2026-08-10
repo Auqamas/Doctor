@@ -120,7 +120,7 @@ export default function Doctor() {
                   {/* Social links */}
                   <div className="flex gap-3 mt-3">
                     <a
-                      href="https://www.instagram.com/fareenaasghar"
+                      href="https://www.instagram.com/fareenaasghar/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-9 h-9 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-[#C9A35A] transition-colors duration-300"

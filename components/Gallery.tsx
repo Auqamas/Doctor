@@ -13,12 +13,12 @@ const galleryImages = [
   { id: 4, src: '/images/treatment-prp.png', title: 'PRP Therapy', category: 'Regenerative' },
   { id: 5, src: '/images/treatment-laser.png', title: 'Laser Treatment', category: 'Laser' },
   { id: 6, src: '/images/treatment-microneedling.png', title: 'Microneedling', category: 'Skin Care' },
-  { id: 7, src: '/images/clinic-interior.png', title: 'Our Clinic', category: 'Clinic' },
-  { id: 8, src: '/images/doctor-about.png', title: 'Consultation', category: 'Doctor' },
-  { id: 9, src: '/images/blog-1.png', title: 'Skin Rejuvenation', category: 'Skin Care' },
+  { id: 7, src: '/images/blog-2.png', title: 'Clinic Lounge', category: 'Clinic' },
+  { id: 8, src: '/images/patient-1.png', title: 'Patient Results', category: 'Results' },
+  { id: 9, src: '/images/blog-3.png', title: 'Skin Rejuvenation', category: 'Skin Care' },
 ]
 
-const categories = ['All', 'Anti-Aging', 'Fillers', 'Skin Care', 'Laser', 'Clinic']
+const categories = ['All', 'Anti-Aging', 'Fillers', 'Skin Care', 'Laser', 'Clinic', 'Results']
 
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState('All')

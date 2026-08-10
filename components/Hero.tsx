@@ -175,7 +175,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Doctor Image */}
+          {/* Clinic Image */}
           <div className="relative flex justify-center lg:justify-end">
             {/* Decorative ring */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
@@ -190,10 +190,10 @@ export default function Hero() {
             <div className="relative w-80 h-[480px] lg:w-96 lg:h-[550px]">
               <div className="absolute inset-0 rounded-[40px] overflow-hidden border border-[#C9A35A]/20 shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
                 <Image
-                  src={withBase('/images/doctor-hero.png')}
-                  alt="Dr. Fareena Asghar - Aesthetic & Dermatologist Physician"
+                  src={withBase('/images/clinic-interior.png')}
+                  alt="Aesthetic clinic interior"
                   fill
-                  className="object-cover object-top"
+                  className="object-cover"
                   priority
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />

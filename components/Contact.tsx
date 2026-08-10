@@ -164,7 +164,7 @@ export default function Contact() {
                 Follow Us:
               </span>
               <a
-                href="https://www.instagram.com/fareenaasghar"
+                href="https://www.instagram.com/fareenaasghar/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-[#F8F8F8] border border-[#E8E0D5] flex items-center justify-center hover:bg-[#C9A35A] hover:border-[#C9A35A] hover:text-white text-[#555555] transition-all duration-300"

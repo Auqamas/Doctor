@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { Award, CheckCircle2, Star } from 'lucide-react'
 import { withBase } from '@/lib/paths'
+import Link from 'next/link'
 
 const stats = [
   { value: 10, suffix: '+', label: 'Years Experience' },
@@ -60,17 +61,31 @@ function Counter({
   )
 }
 
-const qualifications = [
-  'MBBS, Internationally Trained',
-  'PgDip & MSc Practical Dermatology, Cardiff University, UK',
-  'Advanced Certifications in Injectables & Energy-Based Devices',
-  'Active Member, American Academy of Anti-Aging Medicine (A4M)',
-  'Board-Certified Aesthetic & Dermatologist Physician',
-  'Specialized in Nonsurgical & Minimally Invasive Procedures',
+const homeHighlights = [
+  'Premium aesthetic & dermatology clinic',
+  'Advanced FDA-approved technology & products',
+  'Personalized treatment plans for every patient',
+  'Sterile, luxurious & patient-first environment',
+  '20+ non-surgical aesthetic treatments',
+  'Trusted by 2.5K+ happy patients',
 ]
 
-export default function About() {
+const pageHighlights = [
+  'Private consultation suites for every visit',
+  'Medical-grade sterilization & safety protocols',
+  'Latest laser, injectable & skin devices',
+  'Calm, spa-inspired recovery spaces',
+  'Transparent pricing & honest guidance',
+  'Aftercare support for lasting results',
+]
+
+type AboutProps = {
+  variant?: 'home' | 'page'
+}
+
+export default function About({ variant = 'home' }: AboutProps) {
   const sectionRef = useRef<HTMLElement>(null)
+  const isPage = variant === 'page'
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -88,10 +103,15 @@ export default function About() {
     return () => observer.disconnect()
   }, [])
 
+  const imageSrc = isPage ? '/images/treatment-laser.png' : '/images/treatment-botox.png'
+  const imageAlt = isPage
+    ? 'Advanced aesthetic treatment room at our clinic'
+    : 'Premium aesthetic treatment experience at our clinic'
+  const highlights = isPage ? pageHighlights : homeHighlights
+
   return (
     <section id="about" ref={sectionRef} className="section-padding bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
         <div className="text-center mb-16 reveal">
           <span
             className="text-sm tracking-[0.25em] uppercase text-[#C9A35A] font-medium"
@@ -104,45 +124,41 @@ export default function About() {
             className="text-4xl lg:text-5xl font-bold text-[#222222] mt-2"
             style={{ fontFamily: 'var(--font-serif)' }}
           >
-            Meet Dr. Fareena Asghar
+            {isPage ? 'Our Clinic Experience' : 'Where Science Meets Beauty'}
           </h2>
           <p
             className="text-[#888888] mt-4 max-w-2xl mx-auto leading-relaxed"
             style={{ fontFamily: 'var(--font-sans)' }}
           >
-            A pioneer in aesthetic medicine, combining advanced science with an artistic eye to
-            deliver naturally beautiful results.
+            {isPage
+              ? 'Step inside a refined aesthetic destination built for comfort, privacy, and medically guided results — from first consultation to aftercare.'
+              : 'A premium aesthetic clinic dedicated to natural rejuvenation, advanced skin care, and confidence-enhancing treatments in a calm, luxurious setting.'}
           </p>
         </div>
 
-        {/* Main content */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
-          {/* Image */}
           <div className="reveal-left relative">
             <div className="relative w-full aspect-[3/4] max-w-md mx-auto lg:mx-0">
-              {/* Background shape */}
               <div className="absolute -inset-4 bg-[#F8F3E8] rounded-[40px] -z-10" />
               <div className="absolute top-4 left-4 right-4 bottom-4 rounded-[32px] overflow-hidden shadow-2xl">
                 <Image
-                  src={withBase('/images/doctor-about.png')}
-                  alt="Dr. Fareena Asghar in consultation"
+                  src={withBase(imageSrc)}
+                  alt={imageAlt}
                   fill
                   className="object-cover"
                 />
               </div>
 
-              {/* Award badge */}
               <div className="absolute -bottom-6 -right-6 glass rounded-2xl p-4 shadow-xl border border-[#C9A35A]/20">
                 <Award size={28} className="text-[#C9A35A] mb-1" />
                 <div className="text-xs font-semibold text-[#222222]" style={{ fontFamily: 'var(--font-sans)' }}>
-                  Certified
+                  Premium
                 </div>
                 <div className="text-xs text-[#888888]" style={{ fontFamily: 'var(--font-sans)' }}>
-                  Aesthetic Specialist
+                  Aesthetic Clinic
                 </div>
               </div>
 
-              {/* Stars badge */}
               <div className="absolute -top-4 -left-4 glass rounded-2xl p-3 shadow-xl border border-[#C9A35A]/20">
                 <div className="flex gap-0.5">
                   {[1, 2, 3, 4, 5].map((s) => (
@@ -156,38 +172,49 @@ export default function About() {
             </div>
           </div>
 
-          {/* Content */}
           <div className="reveal-right">
             <h3
               className="text-3xl lg:text-4xl font-bold text-[#222222] mb-4"
               style={{ fontFamily: 'var(--font-serif)' }}
             >
-              Internationally Trained
-              <span className="text-[#C9A35A]"> Aesthetic & Dermatologist Physician</span>
+              {isPage ? (
+                <>
+                  Designed for Comfort,
+                  <span className="text-[#C9A35A]"> Built for Results</span>
+                </>
+              ) : (
+                <>
+                  A Modern Space for
+                  <span className="text-[#C9A35A]"> Timeless Results</span>
+                </>
+              )}
             </h3>
             <p
               className="text-[#555555] leading-relaxed mb-6"
               style={{ fontFamily: 'var(--font-sans)' }}
             >
-              Dr. Fareena Asghar is an internationally trained, board-certified Aesthetic & Dermatologist Physician with advanced training from Cardiff University, UK, and extensive clinical experience. Her dedication to continuous learning, innovation, and excellence ensures the highest standards in anti-aging care, natural rejuvenation, and aesthetic enhancement.
+              {isPage
+                ? 'Every room in our clinic is planned around the patient journey — warm lighting, discreet consultation areas, and treatment spaces equipped with modern aesthetic technology. We keep the atmosphere calm and elegant so your visit feels restorative, never rushed.'
+                : 'Our clinic is designed to feel serene, private, and refined — the ideal setting for aesthetic and dermatology care. From consultation to aftercare, every detail is thoughtfully planned so you feel comfortable, informed, and confident throughout your journey.'}
             </p>
             <p
               className="text-[#555555] leading-relaxed mb-8"
               style={{ fontFamily: 'var(--font-sans)' }}
             >
-              Known for subtle, elegant enhancements, Dr. Fareena carefully assesses facial structure and individual goals to create personalized treatment plans. Her refined aesthetic sense and patient-first approach focus on enhancing individual beauty while preserving facial harmony, ensuring results that are natural, balanced, and confidence-enhancing.
+              {isPage
+                ? 'Whether you are visiting for injectables, laser care, skin rejuvenation, or a full facial assessment, our team follows clear medical protocols with a personal touch. We focus on natural-looking outcomes, honest recommendations, and long-term skin health.'
+                : 'We combine advanced technology with personalized protocols for anti-aging, skin rejuvenation, injectables, laser treatments, and more. Our focus is always natural-looking enhancement that respects your unique features and lifestyle.'}
             </p>
 
-            {/* Qualifications */}
             <div className="mb-8">
               <h4
                 className="text-sm font-semibold text-[#222222] tracking-widest uppercase mb-4"
                 style={{ fontFamily: 'var(--font-sans)' }}
               >
-                Qualifications & Certifications
+                {isPage ? 'Inside Our Clinic' : 'Why Patients Choose Us'}
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {qualifications.map((q, i) => (
+                {highlights.map((q, i) => (
                   <div key={i} className="flex items-start gap-2">
                     <CheckCircle2 size={16} className="text-[#C9A35A] mt-0.5 flex-shrink-0" />
                     <span
@@ -201,19 +228,15 @@ export default function About() {
               </div>
             </div>
 
-            {/* CTA */}
-            <button
-              onClick={() => {
-                document.getElementById('appointment')?.scrollIntoView({ behavior: 'smooth' })
-              }}
-              className="btn-gold px-8 py-3.5 rounded-full text-sm font-semibold text-white"
+            <Link
+              href="/book-appointment"
+              className="btn-gold inline-flex px-8 py-3.5 rounded-full text-sm font-semibold text-white"
             >
               Book a Consultation
-            </button>
+            </Link>
           </div>
         </div>
 
-        {/* Stats */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 reveal">
           {stats.map((stat, i) => (
             <div

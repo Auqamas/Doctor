@@ -4,8 +4,29 @@ import { useState, useEffect } from 'react'
 import dynamic from 'next/dynamic'
 import { Play, X } from 'lucide-react'
 
-// Dynamically import InstagramEmbed with no SSR
 const InstagramEmbed = dynamic(() => import('./InstagramEmbed'), { ssr: false })
+
+const INSTAGRAM_PROFILE = 'https://www.instagram.com/fareenaasghar/'
+
+function InstagramIcon({ size = 28 }: { size?: number }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+    </svg>
+  )
+}
 
 interface WorkItem {
   id: string
@@ -15,52 +36,53 @@ interface WorkItem {
   category: string
 }
 
+// Real posts from @fareenaasghar
 const workItems: WorkItem[] = [
   {
     id: '1',
     type: 'image',
-    url: 'https://www.instagram.com/p/C9rK8xhSZxL/',
-    title: 'Botox & Anti-Aging Results',
-    category: 'Anti-Aging',
+    url: 'https://www.instagram.com/p/DZPogbUIF3Q/',
+    title: 'Clinic Highlights',
+    category: 'Clinic',
   },
   {
     id: '2',
-    type: 'image',
-    url: 'https://www.instagram.com/p/C9rK8xhSZxL/',
-    title: 'Dermal Fillers & Lip Enhancement',
-    category: 'Fillers',
+    type: 'video',
+    url: 'https://www.instagram.com/reel/DZPcAhyoGgI/',
+    title: 'Treatment Results',
+    category: 'Results',
   },
   {
     id: '3',
-    type: 'video',
-    url: 'https://www.instagram.com/p/C9rK8xhSZxL/',
-    title: 'HydraFacial Treatment Demo',
+    type: 'image',
+    url: 'https://www.instagram.com/p/DVoOzjmkZs_/',
+    title: 'Aesthetic Care',
     category: 'Treatments',
   },
   {
     id: '4',
-    type: 'image',
-    url: 'https://www.instagram.com/p/C9rK8xhSZxL/',
-    title: 'PRP Hair Restoration',
-    category: 'Hair',
+    type: 'video',
+    url: 'https://www.instagram.com/reel/DVL2ndvEybN/',
+    title: 'Patient Transformation',
+    category: 'Results',
   },
   {
     id: '5',
-    type: 'image',
-    url: 'https://www.instagram.com/p/C9rK8xhSZxL/',
-    title: 'Thread Lift Results',
-    category: 'Lifting',
+    type: 'video',
+    url: 'https://www.instagram.com/reel/DU2N2NtiPZG/',
+    title: 'Skin Rejuvenation',
+    category: 'Skin',
   },
   {
     id: '6',
     type: 'video',
-    url: 'https://www.instagram.com/p/C9rK8xhSZxL/',
-    title: 'Skin Rejuvenation Process',
-    category: 'Skin',
+    url: 'https://www.instagram.com/reel/DUThoX1CHxf/',
+    title: 'Before & After',
+    category: 'Results',
   },
 ]
 
-const categories = ['All', 'Anti-Aging', 'Fillers', 'Treatments', 'Hair', 'Lifting', 'Skin']
+const categories = ['All', 'Clinic', 'Results', 'Treatments', 'Skin']
 
 export default function WorkResults() {
   const [selectedCategory, setSelectedCategory] = useState('All')
@@ -71,14 +93,13 @@ export default function WorkResults() {
     if (selectedCategory === 'All') {
       setFilteredItems(workItems)
     } else {
-      setFilteredItems(workItems.filter(item => item.category === selectedCategory))
+      setFilteredItems(workItems.filter((item) => item.category === selectedCategory))
     }
   }, [selectedCategory])
 
   return (
     <section className="py-20 md:py-28 bg-white" id="work-results">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
         <div className="text-center mb-16">
           <span
             className="inline-block text-[#C9A35A] text-sm font-medium tracking-widest uppercase mb-3"
@@ -96,13 +117,13 @@ export default function WorkResults() {
             className="max-w-2xl mx-auto text-[#555555] text-lg leading-relaxed"
             style={{ fontFamily: 'var(--font-sans)' }}
           >
-            Real transformations from our patients. Each image and video showcases the natural, elegant results we achieve through personalized aesthetic treatments.
+            Real transformations from our patients. Follow along on Instagram for the latest
+            treatments, results, and clinic updates.
           </p>
         </div>
 
-        {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map(category => (
+          {categories.map((category) => (
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
@@ -118,20 +139,15 @@ export default function WorkResults() {
           ))}
         </div>
 
-        {/* Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {filteredItems.map(item => (
+          {filteredItems.map((item) => (
             <div
               key={item.id}
               className="group relative overflow-hidden rounded-2xl cursor-pointer"
               onClick={() => setSelectedItem(item)}
             >
-              {/* Placeholder with icon */}
               <div className="bg-gradient-to-br from-[#F8F8F8] to-[#E8E8E8] aspect-square rounded-2xl flex items-center justify-center relative overflow-hidden hover:shadow-2xl transition-all duration-300">
-                {/* Border accent */}
                 <div className="absolute inset-0 border-2 border-[#C9A35A] opacity-0 group-hover:opacity-100 transition-opacity" />
-
-                {/* Content */}
                 <div className="flex flex-col items-center gap-3">
                   {item.type === 'video' ? (
                     <>
@@ -140,23 +156,17 @@ export default function WorkResults() {
                         className="text-sm font-medium text-[#C9A35A] bg-white px-3 py-1 rounded-full"
                         style={{ fontFamily: 'var(--font-sans)' }}
                       >
-                        VIDEO
+                        REEL
                       </span>
                     </>
                   ) : (
-                    <div className="w-16 h-16 bg-[#C9A35A] rounded-full flex items-center justify-center">
-                      <span
-                        className="text-white text-2xl font-bold"
-                        style={{ fontFamily: 'var(--font-serif)' }}
-                      >
-                        +
-                      </span>
+                    <div className="w-16 h-16 bg-[#C9A35A] rounded-full flex items-center justify-center text-white">
+                      <InstagramIcon size={28} />
                     </div>
                   )}
                 </div>
               </div>
 
-              {/* Overlay */}
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center gap-3 rounded-2xl">
                 <h3
                   className="text-white font-bold text-center px-4"
@@ -168,28 +178,26 @@ export default function WorkResults() {
                   className="text-[#C9A35A] text-sm font-medium"
                   style={{ fontFamily: 'var(--font-sans)' }}
                 >
-                  View Post
+                  View on Instagram
                 </span>
               </div>
             </div>
           ))}
         </div>
 
-        {/* CTA */}
         <div className="text-center">
           <a
-            href="https://instagram.com/drfareenaasghar"
+            href={INSTAGRAM_PROFILE}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-block px-8 py-3 bg-[#C9A35A] text-white font-semibold rounded-full hover:bg-[#B8932A] transition-colors"
             style={{ fontFamily: 'var(--font-sans)' }}
           >
-            Follow @drfareenaasghar on Instagram
+            Follow @fareenaasghar on Instagram
           </a>
         </div>
       </div>
 
-      {/* Modal for Instagram Embed */}
       {selectedItem && (
         <div
           className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
@@ -197,19 +205,28 @@ export default function WorkResults() {
         >
           <div
             className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative"
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
             <button
               onClick={() => setSelectedItem(null)}
-              className="absolute top-4 right-4 z-10 bg-white rounded-full p-2 hover:bg-gray-100 transition-colors"
+              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white shadow-lg flex items-center justify-center hover:bg-[#F8F8F8]"
+              aria-label="Close"
             >
-              <X className="w-6 h-6 text-[#222222]" />
+              <X size={20} />
             </button>
-
-            {/* Instagram Embed */}
-            <div className="p-6">
+            <div className="p-6 pt-14">
               <InstagramEmbed url={selectedItem.url} caption={selectedItem.title} />
+              <div className="mt-4 text-center">
+                <a
+                  href={selectedItem.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-semibold text-[#C9A35A] hover:underline"
+                  style={{ fontFamily: 'var(--font-sans)' }}
+                >
+                  Open post on Instagram →
+                </a>
+              </div>
             </div>
           </div>
         </div>

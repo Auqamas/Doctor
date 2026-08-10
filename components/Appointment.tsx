@@ -107,8 +107,8 @@ export default function Appointment() {
           <div className="lg:col-span-2 reveal-left">
             <div className="relative rounded-3xl overflow-hidden h-72 lg:h-80 mb-6">
               <Image
-                src={withBase('/images/clinic-interior.png')}
-                alt="Aesthetic Clinic Interior"
+                src={withBase('/images/treatment-microneedling.png')}
+                alt="Aesthetic treatment at our clinic"
                 fill
                 className="object-cover"
               />
