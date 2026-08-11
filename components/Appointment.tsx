@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import { CheckCircle2, Clock, Phone, Mail, Calendar } from 'lucide-react'
 import { withBase } from '@/lib/paths'
+import { clinicPhones } from '@/lib/contact'
 
 const treatments = [
   'Botox', 'Dermal Fillers', 'Lip Enhancement', 'HydraFacial',
@@ -143,10 +144,17 @@ export default function Appointment() {
                     <Phone size={16} className="text-[#C9A35A]" />
                   </div>
                   <div>
-                    <p className="text-xs text-[#888888]" style={{ fontFamily: 'var(--font-sans)' }}>Phone</p>
-                    <a href="tel:+923001234567" className="text-sm font-medium text-[#333333] hover:text-[#C9A35A] transition-colors" style={{ fontFamily: 'var(--font-sans)' }}>
-                      +92 300 123 4567
-                    </a>
+                    <p className="text-xs text-[#888888]" style={{ fontFamily: 'var(--font-sans)' }}>Phone & WhatsApp</p>
+                    {clinicPhones.map((phone) => (
+                      <a
+                        key={phone.tel}
+                        href={phone.tel}
+                        className="block text-sm font-medium text-[#333333] hover:text-[#C9A35A] transition-colors"
+                        style={{ fontFamily: 'var(--font-sans)' }}
+                      >
+                        {phone.display}
+                      </a>
+                    ))}
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -249,7 +257,7 @@ export default function Appointment() {
                           value={form.phone}
                           onChange={handleChange}
                           required
-                          placeholder="+92 300 000 0000"
+                          placeholder="+971 56 128 0538"
                           className={inputClass}
                           style={{ fontFamily: 'var(--font-sans)' }}
                         />

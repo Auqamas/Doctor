@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Phone, ChevronDown } from 'lucide-react'
+import { primaryPhone } from '@/lib/contact'
 import { withBase } from '@/lib/paths'
 
 type NavItem = {
@@ -210,14 +211,14 @@ export default function Header() {
             {/* CTA + Phone */}
             <div className="hidden lg:flex items-center gap-4 shrink-0">
               <a
-                href="tel:+923001234567"
+                href={primaryPhone.tel}
                 className={`flex items-center gap-1.5 text-sm font-medium transition-colors duration-300 ${
                   isSolid ? 'hover:text-[#FFF8EC]' : 'hover:text-[#C9A35A]'
                 } ${navTextClass}`}
                 style={{ fontFamily: 'var(--font-sans)' }}
               >
                 <Phone size={14} />
-                <span>+92 300 123 4567</span>
+                <span>{primaryPhone.display}</span>
               </a>
               <Link
                 href="/book-appointment"

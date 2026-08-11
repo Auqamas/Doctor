@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { MapPin, Phone, Mail, ArrowRight } from 'lucide-react'
+import { clinicAddress, clinicPhones } from '@/lib/contact'
 import { withBase } from '@/lib/paths'
 
 function InstagramIcon({ size = 15 }: { size?: number }) {
@@ -158,19 +159,21 @@ export default function Footer() {
               <div className="flex items-start gap-2.5 text-sm text-white/50">
                 <MapPin size={14} className="text-[#C9A35A] mt-0.5 flex-shrink-0" />
                 <span style={{ fontFamily: 'var(--font-sans)' }}>
-                  123 Gulberg III, Lahore, Pakistan
+                  {clinicAddress.full}
                 </span>
               </div>
-              <div className="flex items-center gap-2.5 text-sm">
-                <Phone size={14} className="text-[#C9A35A] flex-shrink-0" />
-                <a
-                  href="tel:+923001234567"
-                  className="text-white/50 hover:text-[#C9A35A] transition-colors"
-                  style={{ fontFamily: 'var(--font-sans)' }}
-                >
-                  +92 300 123 4567
-                </a>
-              </div>
+              {clinicPhones.map((phone) => (
+                <div key={phone.tel} className="flex items-center gap-2.5 text-sm">
+                  <Phone size={14} className="text-[#C9A35A] flex-shrink-0" />
+                  <a
+                    href={phone.tel}
+                    className="text-white/50 hover:text-[#C9A35A] transition-colors"
+                    style={{ fontFamily: 'var(--font-sans)' }}
+                  >
+                    {phone.display}
+                  </a>
+                </div>
+              ))}
               <div className="flex items-center gap-2.5 text-sm">
                 <Mail size={14} className="text-[#C9A35A] flex-shrink-0" />
                 <a

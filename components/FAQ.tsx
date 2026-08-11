@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { Plus, Minus } from 'lucide-react'
+import { primaryPhone } from '@/lib/contact'
 
 const faqs = [
   {
@@ -47,7 +48,7 @@ const faqs = [
     questions: [
       {
         q: 'How do I book a consultation?',
-        a: 'You can book a consultation directly through our website using the appointment form, by calling us at +92 300 123 4567, or by messaging us on WhatsApp. We offer in-person consultations and can arrange online consultations for out-of-city patients.',
+        a: 'You can book a consultation directly through our website using the appointment form, by calling us at +971 56 128 0538 or +971 58 990 0137, or by messaging us on WhatsApp. We offer in-person consultations at our Nad Al Sheba 3, Dubai clinic and can arrange online consultations for out-of-city patients.',
       },
       {
         q: 'What should I expect during my first consultation?',
@@ -208,7 +209,7 @@ export default function FAQ() {
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="https://wa.me/923001234567"
+              href={primaryPhone.wa}
               className="btn-gold px-7 py-3 rounded-full text-sm font-semibold text-white text-center"
             >
               WhatsApp Us

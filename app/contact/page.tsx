@@ -8,7 +8,7 @@ import PageHero from '@/components/PageHero'
 export const metadata: Metadata = {
   title: 'Contact Us | Aesthetic by Dr. Fareena Asghar',
   description:
-    'Get in touch with Aesthetic by Dr. Fareena Asghar. Find our clinic address, phone number, WhatsApp, and working hours.',
+    'Get in touch with Aesthetic by Dr. Fareena Asghar in Nad Al Sheba 3, Dubai. Call or WhatsApp +971 56 128 0538 or +971 58 990 0137.',
 }
 
 export default function ContactPage() {

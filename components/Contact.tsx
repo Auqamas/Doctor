@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from 'react'
 import { MapPin, Phone, Mail, Clock, MessageCircle } from 'lucide-react'
+import { clinicAddress, clinicPhones, primaryPhone, mapsEmbedUrl } from '@/lib/contact'
 
 function InstagramIcon({ size = 16 }: { size?: number }) {
   return (
@@ -25,13 +26,13 @@ const contactInfo = [
   {
     icon: MapPin,
     title: 'Clinic Address',
-    lines: ['123 Gulberg III, Main Boulevard', 'Lahore, Punjab, Pakistan'],
+    lines: [clinicAddress.line1, clinicAddress.line2],
   },
   {
     icon: Phone,
     title: 'Phone & WhatsApp',
-    lines: ['+92 300 123 4567', '+92 42 000 0000'],
-    links: ['tel:+923001234567', 'tel:+924200000000'],
+    lines: clinicPhones.map((p) => p.display),
+    links: clinicPhones.map((p) => p.tel),
   },
   {
     icon: Mail,
@@ -150,7 +151,7 @@ export default function Contact() {
                 For urgent aesthetic concerns or post-treatment queries:
               </p>
               <a
-                href="https://wa.me/923001234567"
+                href={primaryPhone.wa}
                 className="btn-gold inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold text-white"
               >
                 <MessageCircle size={14} />
@@ -187,7 +188,7 @@ export default function Contact() {
             <div className="rounded-3xl overflow-hidden shadow-sm border border-[#E8E0D5] h-full min-h-[400px]">
               <iframe
                 title="Aesthetic Clinic Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13607.455049009165!2d74.32895!3d31.52037!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904d4d5a7a2a3%3A0x6a6b5e9f8c8d8e8f!2sGulberg%20III%2C%20Lahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1690000000000!5m2!1sen!2s"
+                src={mapsEmbedUrl}
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: '400px' }}

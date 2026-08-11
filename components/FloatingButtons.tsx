@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { Phone, ChevronUp } from 'lucide-react'
+import { primaryPhone, whatsappConsultationUrl } from '@/lib/contact'
 
 function WhatsAppIcon({ size = 22 }: { size?: number }) {
   return (
@@ -52,7 +53,7 @@ export default function FloatingButtons() {
 
       {/* WhatsApp — icon expands on hover */}
       <a
-        href="https://wa.me/923001234567?text=Hello%20Dr.%20Fareena!%20I%20would%20like%20to%20book%20a%20consultation."
+        href={whatsappConsultationUrl}
         target="_blank"
         rel="noopener noreferrer"
         className="group relative flex items-center justify-end h-14 rounded-full bg-[#25D366] text-white shadow-lg overflow-hidden transition-all duration-300 ease-out hover:shadow-[0_4px_24px_rgba(37,211,102,0.45)] hover:bg-[#1ebe57] w-14 hover:w-[200px]"
@@ -81,7 +82,7 @@ export default function FloatingButtons() {
 
       {/* Call button */}
       <a
-        href="tel:+923001234567"
+        href={primaryPhone.tel}
         className="w-14 h-14 rounded-full bg-[#C9A35A] flex items-center justify-center shadow-lg transition-all duration-300 hover:scale-110 hover:shadow-[0_4px_20px_rgba(201,163,90,0.5)] hover:bg-[#b8913f]"
         aria-label="Call us"
       >
