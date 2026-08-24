@@ -95,11 +95,17 @@ export default function Header() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-4">
+          <div className="flex items-center justify-between gap-2 sm:gap-4 min-w-0">
 
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 shrink-0 min-w-0 max-w-[420px] xl:max-w-[480px] hover:opacity-80 transition-opacity">
-              <div className={`relative shrink-0 ${isSolid ? 'w-20 h-20' : 'w-28 h-28'} transition-all duration-500`}>
+            <Link href="/" className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1 lg:flex-none lg:max-w-[520px] hover:opacity-80 transition-opacity">
+              <div
+                className={`relative shrink-0 transition-all duration-500 ${
+                  isSolid
+                    ? 'w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20'
+                    : 'w-14 h-14 sm:w-20 sm:h-20 lg:w-28 lg:h-28'
+                }`}
+              >
                 <Image
                   src={withBase('/images/logo.png')}
                   alt="Aesthetic by Dr. Fareena Asghar"
@@ -110,16 +116,18 @@ export default function Header() {
               </div>
               <div className="flex flex-col leading-tight min-w-0">
                 <span
-                  className={`text-xl sm:text-2xl xl:text-3xl font-semibold tracking-wide transition-colors duration-500 whitespace-nowrap ${logoMainClass}`}
+                  className={`text-2xl sm:text-3xl xl:text-4xl font-semibold tracking-wide transition-colors duration-500 whitespace-nowrap truncate ${logoMainClass}`}
                   style={{ fontFamily: 'var(--font-serif)' }}
                 >
                   Dr. Fareena Asghar
                 </span>
                 <span
-                  className={`text-[10px] sm:text-xs font-medium tracking-[0.1em] uppercase transition-colors duration-500 whitespace-nowrap ${logoSubClass}`}
+                  className={`block text-[10px] sm:text-xs font-medium tracking-[0.08em] uppercase transition-colors duration-500 leading-snug ${logoSubClass}`}
                   style={{ fontFamily: 'var(--font-sans)' }}
                 >
-                  Aesthetic &amp; Dermatologist Physician
+                  Aesthetic &amp; Dermatologist
+                  <br />
+                  Physician
                 </span>
               </div>
             </Link>
@@ -235,7 +243,7 @@ export default function Header() {
 
             {/* Mobile toggle */}
             <button
-              className="lg:hidden p-2 rounded-lg transition-colors text-white"
+              className="lg:hidden shrink-0 relative z-10 -mr-1 p-2 rounded-lg transition-colors text-white"
               onClick={() => setIsMobileOpen(!isMobileOpen)}
               aria-label="Toggle menu"
               aria-expanded={isMobileOpen}
