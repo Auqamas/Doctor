@@ -34,8 +34,6 @@ jobs:
 
       - name: Build Next.js
         run: npm run build
-        env:
-          GITHUB_PAGES: 'true'
 
       - name: Add .nojekyll for GitHub Pages
         run: touch ./out/.nojekyll
